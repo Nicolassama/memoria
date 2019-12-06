@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: MyString
+  body: MyText
+  memo_image_id: MyString
+  deleted_at: 2019-12-05 06:50:46
+
+two:
+  user_id: 1
+  title: MyString
+  body: MyText
+  memo_image_id: MyString
+  deleted_at: 2019-12-05 06:50:46
