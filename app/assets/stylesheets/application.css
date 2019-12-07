@@ -90,6 +90,7 @@ body {
   outline : none;
   display: inline-block;
   vertical-align: middle;
+  margin-left: -28px;
 }
 
 
@@ -97,7 +98,7 @@ body {
 .logo {
 	float: left;
 	margin-left: 200px;
-	margin-top: 3px;
+	margin-top: 15px;
 }
 
 
@@ -196,12 +197,58 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     margin-top: -9px;
 }
 
+/* 会員登録　*/
+
+.sign-up-headding {
+	margin-top: 20px;
+	text-align: center;
+	font-family: Arial Narrow, sans-serif;
+	font-weight: 500;
+}
 
 .devise-sign-up {
-	width: 60%;
-	height: 200px;
-
+	width: 400px;
+	height: 400px;
+	margin: 0 auto;
+	border: 2px solid black;
+	border-radius: 15px;
+	padding: 10px;
+	margin-top: 150px;
 }
+
+.sign-up-main {
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+}
+
+.email {
+	margin-right: 10px;
+}
+
+.email-form {
+	width: 300px;
+	height: 25px;
+	margin-bottom: 10px;
+}
+
+.actions {
+	width: 100px;
+	height: 30px;
+	background-color: #59EFC1;
+	color: white;
+	margin-top: 30px;
+	margin: 0 auto:
+}
+
+
+
+
+
+
+
+
+
 
 
 

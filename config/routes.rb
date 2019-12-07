@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'memos#index'
-  get 'memos/index' => 'memos#index'
   get 'memos/about' => 'memos#about'
   get 'memos/search' => 'memos#search'
   post 'memos' => 'memos#create'
@@ -12,7 +11,6 @@ Rails.application.routes.draw do
   get 'users/exit' => 'users#exit'
   resource :users
 
- 
   get 'favorites/index' => 'favorites#index'
   resource :favorites
 

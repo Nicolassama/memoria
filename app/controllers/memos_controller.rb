@@ -23,7 +23,7 @@ class MemosController < ApplicationController
 	def create
 		memo = Memo.new(memo_params)
 		memo.save
-		redirect_to memos_index_path
+		redirect_to root_path
 	end
 
 	def edit
