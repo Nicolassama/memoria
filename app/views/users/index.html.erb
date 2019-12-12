@@ -1,3 +1,5 @@
+
+<h1>mypage</h1>
 <div class="post">
 	<div class="post-form">
 		<%= form_for @memo do |memo| %>
@@ -8,11 +10,31 @@
 
 		<% end %>
 		</div>
-	<% @memos.each do |memos| %>
-	<div class="table">
-		<span class="memo-title"><%= memos.title %></span>
-		<span class-"memo-body"><%= memos.body %></span>
+
+<ul id="switch">
+<li id="mymemo">mymemo</li>
+<li id="follow">フォロー</li>
+<li id="follower">フォロワー</li>
+
+</ul>
+<!-- mymemoの部分 -->
+	<div id="divA">
+		<% @memos.each do |memos| %>
+			<div class="table">
+				<span class="memo-title"><%= memos.title %></span>
+				<span class-"memo-body"><%= memos.body %></span>
+			</div>
+		<% end %>
 	</div>
-	<% end %>
+<!-- フォローの部分 -->
+<div id="divB">
+
+
+</div>
+<!-- フォロワーの部分 -->
+
+
+
+	
 
 </div>

@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 	def index
+		@user = current_user
+		@memo = Memo.new
+		@memos = Memo.all
 	end
 
 	def edit

@@ -68,6 +68,7 @@ gem 'jquery-rails'
 
 
 
+gem 'execjs'
 
 
 
