@@ -16,8 +16,9 @@
         <%= link_to root_path do %> <%= image_tag 'logo.png', class: 'logo' %> <% end %>
         <div class="header-list">
         <ul class="header-right">
-          <li class="sign-up"><%= link_to "新規会員登録", new_user_registration_path %></li>
-          <li class="log-in"><%= link_to "ログイン", new_user_session_path %></li>
+          <li>
+           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </li>
           <li><div class="search">
               <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
               <form method="get" action="#" class="search_container">

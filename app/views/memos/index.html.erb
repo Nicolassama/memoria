@@ -1,5 +1,4 @@
 
-<h1>新規投稿</h1>
 	<div class="post">
 		<div class="post-form">
 			<%= form_for @memo do |memo| %>
@@ -13,10 +12,10 @@
 		<% end %>
 		</div>
 	<% @memos.each do |memos| %>
-
-		<span><%= memos.title %></span>
-		<span><%= memos.body %></span>
-
+	<div class="table">
+		<span class="memo-title"><%= memos.title %></span>
+		<span class-"memo-body"><%= memos.body %></span>
+	</div>
 	<% end %>
 
 </div>

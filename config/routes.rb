@@ -6,13 +6,23 @@ Rails.application.routes.draw do
   get 'memos/about' => 'memos#about'
   get 'memos/search' => 'memos#search'
   post 'memos' => 'memos#create'
-  resource :memos
+
+	resources :memos do
+    resource :favorites, only: [:index, :create, :destroy]
+  end
+
+  # ================ここをネスト(入れ子)した形に変更
+  resources :users do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member # 追加
+    get :followers, on: :member # 追加
+  end
+
+
+  get 'favorites/index' => 'favorites#index'
 
   get 'users/exit' => 'users#exit'
   resource :users
-
-  get 'favorites/index' => 'favorites#index'
-  resource :favorites
 
   get 'notifications/index' => 'notifications#index'
 
