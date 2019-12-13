@@ -3,6 +3,7 @@ class MemosController < ApplicationController
 	def index
 		@memo = Memo.new
 		@memos = Memo.all
+		@random = Memo.order("RANDOM()").limit(50)
 	end
 
 	def about

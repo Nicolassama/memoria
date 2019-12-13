@@ -7,3 +7,118 @@
 	height: 200px;
 	margin: 0 auto;
 }
+
+.body {
+	width: 60%;
+	height: 1000px;
+	margin: 0 auto;
+}
+#switch {
+	width: 60%;
+	height: auto;
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+#switch li {
+	font-size: 8px;
+	float: left;
+}
+
+#switch li b{
+	float: left;
+}
+
+.btn {
+	display: inline-block;
+  float: left;
+  width: 100px;
+  padding: 5px;
+  font-size: 1.6rem;
+  text-align: center;
+  color: black;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background: #59EFC1;
+  border-bottom: 2px solid green;
+}
+
+.btn .appear {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+.btn:checked ~ .appear {
+  background: #59EFC1;
+  height: auto;
+}
+
+.btn:hover {
+  cursor: default;
+  background: #59EFC1;
+}
+
+.boxDisplay {
+	display: block;
+}
+
+.boxNone {
+	display: none;
+}
+
+
+/*memo about */
+.about-body {
+	width: 100%;
+	height: 100%;
+	background-color: #f7f9f9;
+	padding-top: 60px;
+}
+
+
+.frame {
+	width: 50%;
+	height: 600px;
+	margin: 0 auto;
+	margin-top: 60px;
+	background-color: white;
+	color: black;
+	padding-top: 20px;
+}
+
+.heading {
+	font-size: 50px;
+	text-align: center;
+	font-family: "Alfa Slab One";
+	margin-top: 10px;
+}
+
+
+.container {
+	font-family: "Alfa Slab One";
+	width: 80%;
+	margin: 0 auto;
+	font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

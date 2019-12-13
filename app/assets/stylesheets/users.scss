@@ -1,3 +1,71 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.body {
+	width: 60%;
+	height: 1000px;
+	margin: 0 auto;
+}
+#switch {
+	width: 60%;
+	height: auto;
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+#switch li {
+	font-size: 8px;
+	float: left;
+}
+
+#switch li b{
+	float: left;
+}
+
+.btn {
+	display: inline-block;
+  float: left;
+  width: 100px;
+  padding: 5px;
+  font-size: 1.6rem;
+  text-align: center;
+  color: black;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background: #59EFC1;
+  border-bottom: 2px solid green;
+}
+
+.btn .appear {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+.btn:checked ~ .appear {
+  background: #59EFC1;
+  height: auto;
+}
+
+.btn:hover {
+  cursor: default;
+  background: #59EFC1;
+}
+
+.boxDisplay {
+	display: block;
+}
+
+.boxNone {
+	display: none;
+}

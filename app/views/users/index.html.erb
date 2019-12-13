@@ -1,40 +1,45 @@
 
-<h1>mypage</h1>
-<div class="post">
-	<div class="post-form">
-		<%= form_for @memo do |memo| %>
-		 	<%= memo.text_field :title %>
-		 	<%= memo.text_area :body %>
+<div class="body">
+	<h1>mypage</h1>
+	<div class="post">
+			<div class="post-form">
+				<%= form_for @memo do |memo| %>
+				 	<%= memo.text_field :title %>
+				 	<%= memo.text_area :body %>
+				 	<%= memo.submit '投稿' %>
+				<% end %>
+			</div>
 
-		 	<%= memo.submit '投稿' %>
+		<ul id="switch">
+			<li id="a">mymemo</li>
+			<li id="b">フォロー</li>
+			<li id="c">フォロワー</li>
+		</ul>
 
-		<% end %>
+		<!-- mymemoの部分 -->
+		<div id="divA">
+			<% @memos.each do |memos| %>
+				<div class="table">
+					<span class="memo-title"><%= memos.title %></span>
+					<span class-"memo-body"><%= memos.body %></span>
+				</div>
+			<% end %>
+		</div>
+		<!-- フォローの部分 -->
+
+
+		<div id="divB">
+			<!--% @follow.each do |follow| %-->
+
+
+			<!--% end %-->
+
 		</div>
 
-<ul id="switch">
-<li id="mymemo">mymemo</li>
-<li id="follow">フォロー</li>
-<li id="follower">フォロワー</li>
+		<!-- フォロワーの部分 -->
 
-</ul>
-<!-- mymemoの部分 -->
-	<div id="divA">
-		<% @memos.each do |memos| %>
-			<div class="table">
-				<span class="memo-title"><%= memos.title %></span>
-				<span class-"memo-body"><%= memos.body %></span>
+			<div id="divC">
+
 			</div>
-		<% end %>
 	</div>
-<!-- フォローの部分 -->
-<div id="divB">
-
-
-</div>
-<!-- フォロワーの部分 -->
-
-
-
-	
-
 </div>

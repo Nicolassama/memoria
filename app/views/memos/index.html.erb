@@ -1,24 +1,33 @@
+<h1>トップページ</h1>
 
 	<div class="post">
 		<div class="post-form">
 			<%= form_for @memo do |memo| %>
-
-		 	<%= memo.text_field :title %>
-
-		 	<%= memo.text_area :body %>
-
-		 	<%= memo.submit '投稿' %>
-
-		<% end %>
+			 	<%= memo.text_field :title %>
+			 	<%= memo.text_area :body %>
+			 	<%= memo.submit '投稿' %>
+			<% end %>
 		</div>
-	<% @memos.each do |memos| %>
-	<div class="table">
-		<span class="memo-title"><%= memos.title %></span>
-		<span class-"memo-body"><%= memos.body %></span>
-	</div>
-	<% end %>
 
-</div>
+		<ul id="switch">
+			<li id="a">おすすめ</li>
+			<li id="b">フォロー</li>
+		</ul>
+
+		<!-- おすすめ -->
+		<div id="divA">
+			<% @random.each do |memo| %>
+  			<%= memo.title %>
+  			<%= memo.body %>
+			<% end %>
+		</div>
+
+		<!-- フォロワーの部分 -->
+
+		<div id="divB">
+			bbb
+		</div>
+	</div>
 
 
 
