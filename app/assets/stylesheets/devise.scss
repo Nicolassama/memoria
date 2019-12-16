@@ -1,4 +1,18 @@
+.clearfix {
+	content: "";
+	display: inline-block;
+	clear: both;
+}
+
+
+
 .main-sign-up {
 	width: 60%;
 	height: 200px;
+}
+
+.error {
+	width: 60%;
+	margin-top: 70px;
+	text-align: center;
 }

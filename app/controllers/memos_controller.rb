@@ -23,6 +23,7 @@ class MemosController < ApplicationController
 
 	def create
 		memo = Memo.new(memo_params)
+		@memo.user_id = current_user.id
 		memo.save
 		redirect_to root_path
 	end

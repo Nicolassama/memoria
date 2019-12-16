@@ -11,18 +11,16 @@ Rails.application.routes.draw do
     resource :favorites, only: [:index, :create, :destroy]
   end
 
-  # ================ここをネスト(入れ子)した形に変更
+  get 'users/exit' => 'users#exit'
+
   resources :users do
     resource :relationships, only: [:create, :destroy]
-    get :follows, on: :member # 追加
-    get :followers, on: :member # 追加
+    get :follows, on: :member
+    get :followers, on: :member
   end
 
 
   get 'favorites/index' => 'favorites#index'
-
-  get 'users/exit' => 'users#exit'
-  resource :users
 
   get 'notifications/index' => 'notifications#index'
 

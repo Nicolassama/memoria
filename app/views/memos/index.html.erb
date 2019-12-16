@@ -16,10 +16,14 @@
 
 		<!-- おすすめ -->
 		<div id="divA">
+			<div class="memo-form">
 			<% @random.each do |memo| %>
-  			<%= memo.title %>
-  			<%= memo.body %>
+			<!--%= memo.hidden_field :user_id, :value => current_user.id %-->
+			<!--%= memo.hidden_field :memo_id, :value => memo.id %-->
+  			<div class="memo-title"><%= memo.title %></div>
+  			<div class="memo-body"><%= memo.body %></div>
 			<% end %>
+			</div>
 		</div>
 
 		<!-- フォロワーの部分 -->

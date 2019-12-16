@@ -1,0 +1,262 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+  @import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+html, body {
+    overflow-x: hidden;
+    height: 100%;
+}
+body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+}
+
+
+/* --header右 - */
+
+
+.header {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: #59EFC1;
+    position: fixed;
+    height: 60px!important;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.header-right {
+	margin-right: 20px;
+	font-color: white;
+}
+.header-list li{
+	list-style: none;
+	text-decoration: none;
+	float: right;
+	margin-right: 20px;
+	line-height: 40px;
+}
+
+
+/* --検索ボックス - */
+.search_container{
+  box-sizing: border-box;
+}
+.search_container input[type="text"]{
+  border: 1px solid #999;
+  padding: 3px 5px;
+  border-radius: 20px;
+  height: 1.5em;
+  width: 200px;
+  overflow: hidden;
+}
+.search_container input[type="text"]:focus {
+  outline: 0;
+}
+.search_container input[type="submit"]{
+  cursor: pointer;
+  font-family: FontAwesome;
+  font-size: 1.3em;
+  border: none;
+  background: none;
+  color: #808080;
+  outline : none;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -28px;
+}
+
+
+/* --logo - */
+.logo {
+	float: left;
+	margin-left: 200px;
+	margin-top: 15px;
+}
+
+.logo1 {
+  float: left;
+  margin-left: 200px;
+  margin-top: 5px;
+}
+
+#sidebarMenu {
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: 200px;
+    margin-top: 60px;
+    transform: translateX(-250px);
+    transition: transform 250ms ease-in-out;
+    background: linear-gradient(180deg, #59EFC1 0%, #fff 100%);
+}
+
+.sidebarMenuInner{
+    margin:0;
+    padding:0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li{
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+.sidebarIconToggle {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 22px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+}
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}
+
+/* 会員登録　*/
+
+.sign-up-headding {
+	margin-top: 20px;
+	text-align: center;
+	font-family: Arial Narrow, sans-serif;
+	font-weight: 500;
+}
+
+.devise-sign-up {
+	width: 400px;
+	height: 400px;
+	margin: 0 auto;
+	border: 2px solid black;
+	border-radius: 15px;
+	padding: 10px;
+	margin-top: 150px;
+}
+
+.sign-up-main {
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+}
+
+.email {
+	margin-right: 10px;
+}
+
+.email-form {
+	width: 300px;
+	height: 25px;
+	margin-bottom: 10px;
+}
+
+.actions {
+	width: 100px;
+	height: 30px;
+	background-color: #59EFC1;
+	color: white;
+	margin-top: 30px;
+	margin: 0 auto:
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

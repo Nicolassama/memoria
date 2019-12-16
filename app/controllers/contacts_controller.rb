@@ -6,6 +6,7 @@ class ContactsController < ApplicationController
 
 	def create
 		@contact = Contact.new(contact_params)
+    @contact.user_id = current_user.id
     if @contact.save
       ContactMailer.contact_mail(@contact).deliver
       flash[:success] = 'お問い合わせを受け付けました'

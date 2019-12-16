@@ -1,0 +1,14 @@
+<div class="about-body">
+
+	<div class="frame">
+		<h3>退会<br><%= image_tag 'logo2.png', class: 'logo2' %></h3>
+
+			<div class="exit">
+				<%= link_to "はい", root_path(current_user), method: :delete, "data-confirm" =>"本当に退会しますか？" %>
+
+				<%= link_to "いいえ", root_path %>
+
+			</div>
+
+	</div>
+</div>

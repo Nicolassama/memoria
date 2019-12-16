@@ -12,9 +12,12 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
+		current_user.destroy
+		redirect_to root_path, notice: '退会しました'
 	end
 
 	def exit
+		@user = current_user
 	end
 
 end
