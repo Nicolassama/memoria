@@ -2,26 +2,55 @@
 <div class="body">
 	<h1>mypage</h1>
 	<div class="post">
+		<button type="button" class="" data-toggle="modal" data-target="#post">
+
 			<div class="post-form">
-				<%= form_for @memo do |memo| %>
-				 	<%= memo.text_field :title %>
-				 	<%= memo.text_area :body %>
-				 	<%= memo.submit '投稿' %>
-				<% end %>
+					<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
+			 		<div class="form-content">メモを残す</div>
 			</div>
+		</button>
+
+		<!-- zoomした時 -->
+
+	  <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+						<div class-"zoom-form">
+							<%= form_for @memo do |memo| %>
+								<div class="error-message"></div>
+								<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
+								<%= memo.text_field :title, class: "form-title", placeholder: "メモのタイトル"  %>
+				 				<%= memo.text_area :body, class: "form-body", placeholder: "メモを残そう！" %>
+				 				<%= memo.submit '投稿', class: "form-submit" %>
+							<% end %>
+						</div>
+
+			</div>
+		</div>
 
 		<ul id="switch">
-			<li id="a">mymemo</li>
-			<li id="b">フォロー</li>
+			<li id="a">mymemo</li>|
+			<li id="b">フォロー</li>|
 			<li id="c">フォロワー</li>
 		</ul>
 
 		<!-- mymemoの部分 -->
 		<div id="divA">
-			<% @memos.each do |memos| %>
-				<div class="container">
+			<% @thememo.each do |memos| %>
+				<div class="table memo-form">
+					<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
 					<span class="memo-title"><%= memos.title %></span>
 					<span class-"memo-body"><%= memos.body %></span>
+					<% if current_user.already_liked?(memos) %>
+  						<%= link_to favorites_delete_path, method: :delete do %>
+  							<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+  						<% end %>
+					<% else %>
+ 						<%= link_to favorites_index_path do %>
+ 							<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+ 						<% end %>
+					<% end %>
+				<%= link_to "編集", edit_memo_path(memos.id) %>
+				<%= link_to "削除", users_path(memos.id), method: :delete, "data-confirm" =>"本当に削除しますか？" %>
 				</div>
 			<% end %>
 		</div>
@@ -31,7 +60,7 @@
 		<div id="divB">
 			<!--% @follow.each do |follow| %-->
 
-aa
+
 			<!--% end %-->
 
 		</div>
@@ -39,7 +68,7 @@ aa
 		<!-- フォロワーの部分 -->
 
 			<div id="divC">
-vvv
+
 			</div>
 	</div>
 </div>

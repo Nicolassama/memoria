@@ -1,0 +1,26 @@
+<div class="body">
+	<h1 class="heading"></h1>
+		<div class="contaoner">
+			<% flash.each do |type,msg| %>
+				<%= msg %>
+			<% end %>
+			<% @favorites.each do |favorite| %>
+  				<% memo = Memo.find_by(id: favorite.memo_id) %>
+  				<% user = User.find_by(id: memo.user_id) %>
+ 				 <%= favorite.memo.title %>
+  					<%= favorite.memo.body %>
+			<% end %>
+
+
+		</div>
+</div>
+
+
+
+
+
+
+
+
+
+

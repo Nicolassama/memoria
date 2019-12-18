@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   get 'users/exit' => 'users#exit'
+  delete 'users/destroy', to:'users#destroy', as: 'users_delete'
 
   resources :users do
     resource :relationships, only: [:create, :destroy]
@@ -21,10 +22,14 @@ Rails.application.routes.draw do
 
 
   get 'favorites/index' => 'favorites#index'
+  post 'favorites/:id' => 'favorites#create'
+  delete 'favorites/destroy', to:'favorites#destroy', as: 'favorites_delete'
+
 
   get 'notifications/index' => 'notifications#index'
 
-  resource :contacts
+  post 'contacts/:id' => 'contacts#new'
+  resource :contacts, only: [:new, :create]
 
 
 end

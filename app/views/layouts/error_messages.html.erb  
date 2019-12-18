@@ -1,0 +1,9 @@
+<% if model.errors.any? %> #errorが発生したときの条件分岐。modelはパーシャルで渡されたフォームのオブジェクトの変数。（詳細は後述）
+    <div class = "alert alert-warning">
+        <ul>
+            <% model.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

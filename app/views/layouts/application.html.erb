@@ -20,10 +20,11 @@
            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </li>
           <li><%= link_to current_user.name, users_path %></li>
+          <li><%= link_to "編集", edit_user_path(current_user) %></li>
           <li><div class="search">
               <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
               <form method="get" action="#" class="search_container">
-              <input type="text" size="25" placeholder="　キーワードやユーザー名で検索">
+              <input type="text" size="5" placeholder="　キーワードやユーザー名で検索">
               <input type="submit" value="&#xf002">
               </form></div>
           </li>
@@ -58,7 +59,7 @@
           <li><div class="search">
             <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
             <form method="get" action="#" class="search_container">
-              <input type="text" size="25" placeholder="　キーワードやユーザー名で検索">
+              <input type="text" size="5" placeholder="　キーワードやユーザー名で検索">
               <input type="submit" value="&#xf002">
             </form>
           </div></li>

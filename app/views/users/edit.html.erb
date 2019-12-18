@@ -1,0 +1,19 @@
+
+<div class="about-body">
+	<div class="edit-heading">
+		<div class="heading">アカウント設定</div>
+	</div>
+		<div class="edit-frame">
+				<div class="container1">
+					<%= form_for @user do |user| %>
+						<%= image_tag 'no.image.jpg', :size =>'100x100', class: 'profile-image' %>
+						<%= user.attachment_field :profile_image %>
+						<div class="edit-name">名前</div>
+								<%= user.text_field :name, size: '55x5', class: "form-name", placeholder: "名前"  %>
+						<div class="edit-name">メールアドレス</div>
+				 				<%= user.text_field :email, size: '55x5', class: "form-email", placeholder: "メールアドレス" %><br>
+				 				<%= user.submit '変更を保存', class: "form-submit" %>
+							<% end %>
+				</div>
+		</div>
+</div>

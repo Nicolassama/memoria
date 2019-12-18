@@ -7,11 +7,11 @@ class User < ApplicationRecord
 
   has_many :notifications
 
-  has_many :memos
+  has_many :memos, dependent: :destroy
 
   has_many :comments
 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
 
   has_many :contacts
 
@@ -33,5 +33,9 @@ class User < ApplicationRecord
   def followed_by?(user)
     #userがfollow済みかどうかの判定
     passive_relationships.find_by(following_id: user.id).present?
+  end
+
+  def already_liked?(memo)
+    self.favorites.exists?(memo_id: memo.id)
   end
 end

@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
 
-	belongs_to :users
+	belongs_to :user
 
-	belongs_to :memos
+	belongs_to :memo
 
 end

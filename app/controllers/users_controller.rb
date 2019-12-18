@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 	def index
-		@user = current_user
 		@memo = Memo.new
 		@memos = Memo.all
+		@thememo = Memo.where(user_id: current_user.id)
+		# @user = @thememo.users
 	end
 
 	def edit
+		@user = current_user
 	end
 
 	def update
@@ -18,6 +20,14 @@ class UsersController < ApplicationController
 
 	def exit
 		@user = current_user
+	end
+
+	private
+
+	def correct_user
+		@memo = Memo.find(params[:id])
+    @user = @memo.user
+    redirect_to root_path unless current_user == @user
 	end
 
 end

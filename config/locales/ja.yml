@@ -1,0 +1,6 @@
+ja:
+    activerecord:
+        attributes:
+            memo: #モデル名
+              title: タイトル　#変換後の日本語を記入
+              body: 本文 #変換後の日本語を記入

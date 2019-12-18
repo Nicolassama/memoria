@@ -3,8 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .post {
-	width: 10%;
-	height: 200px;
+	width: 60%;
+	height: auto;
 	margin: 0 auto;
 }
 
@@ -30,6 +30,7 @@
 
 #switch li b{
 	float: left;
+	margin-left: 20px;
 }
 
 .btn {
@@ -113,12 +114,109 @@
 /* memo-form */
 
 .memo-form {
-	width: 200px;
-	height: 50px;
+	width: 100%;
+	height: 100px;
+	margin: 0 auto;
+	border: 1px solid #a9a4a4;
+	padding: 10px;
+	margin-top: 50px;
 }
 
 
 
+
+
+
+
+
+
+/* post */
+
+.post-form {
+	width: 500px;
+	height: 100px;
+	padding: 5px;
+	margin: 0 auto;
+}
+
+
+.zoom-form {
+	width: 500px;
+	height: 1000px;
+	background-color: #54F303;
+}
+
+.post-image {
+	border-radius: 30px;
+	float: left;
+}
+
+.form-title {
+	width: 80%;
+	border: none;
+	border-bottom: 1px solid #a9a4a4;
+	margin: 15px 0 10px 8px;
+}
+
+.form-body {
+	width: 100%;
+	height: 1000px;
+	border: none;
+	margin-top: 10px;
+
+}
+
+.form-submit {
+	background-color: #59EFC1;
+	border-radius: 8px;
+	float: right;
+}
+
+
+.form-content {
+	float: left;
+	margin: 15px 0 0 10px;
+}
+
+/* editpage */
+
+
+
+
+.border h1 {
+	text-align: center;
+
+}
+
+
+
+.border {
+	width: 500px;
+	height: 850px;
+	border: 1px solid #808080;
+	padding: 20px;
+	border-radius: 5px;
+	margin-left: 150px;
+	margin-top: 20px;
+}
+
+.edit-body {
+	margin-top: 10px;
+}
+
+
+.form-edit {
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+.update {
+	float: right;
+	background-color: #59EFC1;
+	border-radius: 3px;
+	margin-top: 10px;
+	margin-right: 10px;
+}
 
 
 

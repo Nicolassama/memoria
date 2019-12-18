@@ -1,0 +1,18 @@
+<h1>メモの編集</h1>
+
+
+<div class='body'>
+  <div class='container'>
+ 	 <p id="notice"></p>
+				<div class='border'>
+				<h1>メモの編集</h1>
+    			<%= form_for(@memo) do |memo| %>
+  					<div class="edit-title">タイトル</div>
+   						<%= memo.text_field :title, size: '55x5', class: 'form-edit'  %>
+  					<div class="edit-body">本文</div>
+    					<%= memo.text_area :body, size: '53x30', class: 'form-edit'  %>
+    					<%= memo.submit "変更を保存", class: "update" %>
+					<% end %>
+			</div>
+	</div>
+</div>
