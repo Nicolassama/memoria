@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
 	resources :memos do
     resource :favorites, only: [:index, :create, :destroy]
+    resources :comments, only: [:create]
   end
 
   get 'users/exit' => 'users#exit'

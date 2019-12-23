@@ -1,0 +1,29 @@
+<h1 class="user-show"><%= @user.name %>さんのメモ</h1>
+
+
+
+<div class="container">
+
+	<% @memos.each do |memo| %>
+		<div class="memo-form">
+			<div class="post-image">
+				<%= image_tag memo.user.image.to_s, :size =>'50x50', class: 'post-image' do %><% end %>
+			</div>
+
+	  		<div class="memo-title"><%= link_to memo.title, memo_path(memo.id) %></div><br>
+	  		<div class="memo-body"><%= memo.body %></div>
+
+	  		<div class="favorite">
+	  			<% if current_user.already_liked?(memo) %>
+	  				<%= link_to favorites_delete_path, method: :delete do %>
+	  					<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+	  				<% end %>
+					<% else %>
+	 					<%= link_to memo_favorites_path(memo), method: :post do %>
+	 						<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+	 					<% end %>
+					<% end %>
+				</div>
+		</div>
+		<% end %>
+</div>

@@ -66,34 +66,21 @@ body {
 }
 
 
+
 /* --検索ボックス - */
-.search_container{
-  box-sizing: border-box;
+
+.space {
+  width: 230px;
 }
-.search_container input[type="text"]{
-  border: 1px solid #999;
-  padding: 3px 5px;
-  border-radius: 20px;
-  height: 1.5em;
-  width: 200px;
-  overflow: hidden;
-}
-.search_container input[type="text"]:focus {
-  outline: 0;
-}
-.search_container input[type="submit"]{
-  cursor: pointer;
-  font-family: FontAwesome;
-  font-size: 1.3em;
-  border: none;
-  background: none;
-  color: #808080;
-  outline : none;
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: -28px;
+.search ul{
+  float: right;
+  width: 300px;
 }
 
+.space button {
+  background-color: #59EFC1;
+  border: none;
+}
 
 /* --logo - */
 .logo {
@@ -214,18 +201,20 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .devise-sign-up {
 	width: 400px;
-	height: 400px;
-	margin: 0 auto;
+	height: 420px;
 	border: 2px solid black;
 	border-radius: 15px;
 	padding: 10px;
-	margin-top: 150px;
+  margin: 0 auto;
+	margin-top: 100px;
 }
 
 .sign-up-main {
 	width: 300px;
 	height: 300px;
-	margin: 0 auto;
+  margin: 0 auto;
+  text-align: center;
+  margin-left: 30px;
 }
 
 .email {
@@ -243,17 +232,20 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 	height: 30px;
 	background-color: #59EFC1;
 	color: white;
-	margin-top: 30px;
-	margin: 0 auto;
+	margin-top: 20px;
+  text-align: center;
+  border-radius: 5px;
 }
 
 .input {
   font-size: 10px;
 }
 
-
-
-
+.form-control {
+  width: 80%;
+  display: inline;
+  font-size: 11px;
+}
 
 
 

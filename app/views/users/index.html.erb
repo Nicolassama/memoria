@@ -5,7 +5,7 @@
 		<button type="button" class="" data-toggle="modal" data-target="#post">
 
 			<div class="post-form">
-					<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
+					<%= image_tag @user.image.to_s, :size =>'50x50', class: 'post-image' %>
 			 		<div class="form-content">メモを残す</div>
 			</div>
 		</button>
@@ -28,29 +28,39 @@
 		</div>
 
 		<ul id="switch">
-			<li id="a">mymemo</li>|
-			<li id="b">フォロー</li>|
+			<li id="a">mymemo</li>
+			<li class="tate-border">|</li>
+			<li id="b">フォロー</li>
+			<li class="tate-border">|</li>
 			<li id="c">フォロワー</li>
 		</ul>
 
 		<!-- mymemoの部分 -->
 		<div id="divA">
 			<% @thememo.each do |memos| %>
-				<div class="table memo-form">
-					<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
-					<span class="memo-title"><%= memos.title %></span>
+				<div class="table memo-form1">
+					<%= image_tag @user.image.to_s, :size =>'50x50', class: 'post-image' %>
+					<div class="memo-title"><%= link_to memos.title, memo_path(memos.id) %></div><br>
 					<span class-"memo-body"><%= memos.body %></span>
-					<% if current_user.already_liked?(memos) %>
-  						<%= link_to favorites_delete_path, method: :delete do %>
-  							<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-  						<% end %>
-					<% else %>
- 						<%= link_to favorites_index_path do %>
- 							<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
- 						<% end %>
-					<% end %>
-				<%= link_to "編集", edit_memo_path(memos.id) %>
-				<%= link_to "削除", users_path(memos.id), method: :delete, "data-confirm" =>"本当に削除しますか？" %>
+					<ul class="favorite">
+						<li>
+						<% if current_user.already_liked?(memos) %>
+	  						<%= link_to favorites_delete_path(memo_id: memos.id), method: :delete, remote: true do %><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+	  						<%= memos.favorites.count %>
+	  						<% end %>
+							<% else %>
+	 							<%= link_to memo_favorites_path(memo_id: memos.id), method: :post, remote: true do %>
+	 								<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+	 								<%= memos.favorites.count %>
+	 							<% end %>
+							<% end %>
+					</li>
+					<li>
+						<%= link_to "削除", users_path(memos.id), method: :delete, "data-confirm" =>"本当に削除しますか？", class: 'delete' %>
+					</li>
+					<li>
+						<%= link_to "編集", edit_memo_path(memos.id), class: "edit" %>
+					</li>
 				</div>
 			<% end %>
 		</div>
@@ -58,17 +68,52 @@
 
 
 		<div id="divB">
-			<!--% @follow.each do |follow| %-->
-
-
-			<!--% end %-->
-
+				<% @followings.each do |following| %>
+				<br>
+					<div class="table myfollowing">
+						<div class="following-name">
+							<%= image_tag following.image.to_s, :size =>'50x50', class: 'following-image' %>
+							<%= link_to following.name, user_path(following.id), class: "user-name1" %>
+						</div>
+					</div>
+				<% end %>
 		</div>
 
 		<!-- フォロワーの部分 -->
 
-			<div id="divC">
+		<div id="divC">
 
-			</div>
+			<% @followers.each do |follower| %>
+				<br>
+					<div class="table myfollowing">
+						<div class="following-name">
+							<%= image_tag follower.image.to_s, :size =>'50x50', class: 'following-image' %>
+							<%= link_to follower.name, user_path(follower.id), class: "user-name1" %>
+						</div>
+					</div>
+				<% end %>
+		</div>
+
+
+
+
+		</div>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

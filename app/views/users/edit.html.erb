@@ -4,16 +4,24 @@
 		<div class="heading">アカウント設定</div>
 	</div>
 		<div class="edit-frame">
+			<% flash.each do |type,msg| %>
+				<%= msg %>
+			<% end %>
 				<div class="container1">
 					<%= form_for @user do |user| %>
-						<%= image_tag 'no.image.jpg', :size =>'100x100', class: 'profile-image' %>
-						<%= user.attachment_field :profile_image %>
+						<div class="edit-name">プロフィール画像</div>
+     						<div class="image">
+     							<%= image_tag @user.image.to_s, size: '50x50', class: 'post-image' %>
+     						</div>
+     						<%= user.file_field :image %>
+						<!--%= image_tag :profile_image, :size =>'100x100', class: 'profile-image' %-->
 						<div class="edit-name">名前</div>
 								<%= user.text_field :name, size: '55x5', class: "form-name", placeholder: "名前"  %>
 						<div class="edit-name">メールアドレス</div>
 				 				<%= user.text_field :email, size: '55x5', class: "form-email", placeholder: "メールアドレス" %><br>
 				 				<%= user.submit '変更を保存', class: "form-submit" %>
+				 				<%= link_to "ホームへ", root_path, class: "home submit" %>
 							<% end %>
-				</div>
+					</div>
 		</div>
 </div>

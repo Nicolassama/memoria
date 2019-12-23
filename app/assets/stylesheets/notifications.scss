@@ -1,3 +1,24 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.notifications {
+	width: 60%;
+	height: 50px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 50px;
+	margin-top: 30px;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.moderate-font {
+	width: 60%;
+	height: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.body {
+	margin: 0 auto;
+}

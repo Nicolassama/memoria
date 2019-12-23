@@ -1,0 +1,58 @@
+<div class="show-body">
+
+
+  <div class="memo-show">
+    <div class="post-image">
+      <%= image_tag @user.image.to_s, :size =>'50x50', class: 'post-image' do %><% end %>
+    </div>
+
+    <div class="user-name"><%= link_to @user.name, user_path(@user.id) %></div>
+      <% if current_user != @memo.user %>
+        <% if @memo.user.followed_by?(current_user) %>
+          <p><%=link_to "フォロー済み", user_relationships_path(@memo.user.id), class: "following-button", method: :delete %></p>
+        <% else %>
+          <p><%=link_to "フォローする", user_relationships_path(@memo.user.id), class: "follow-button", method: :post %></p>
+        <% end %>
+      <% end %>
+
+    <div class="memo-title"><%= @memo.title %></div><br>
+    <div class="memo-body"><%= @memo.body %></div>
+      <div class="favorite">
+        <% if current_user.already_liked?(@memo) %>
+          <%= link_to favorites_delete_path, method: :delete do %>
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          <% end %>
+        <% else %>
+          <%= link_to memo_favorites_path(@memo), method: :post do %>
+            <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+<!-- コメント -->
+    <h2 class="comment-header">コメント一覧</h2>
+      <% flash.each do |type,msg| %>
+        <%= msg %>
+      <% end %>
+      <% @comments.each do |comment| %>
+        <div class="table">
+          <div class="post-image">
+            <%= image_tag comment.user.image.to_s, :size =>'30x30', class: 'post-image' do %><% end %>
+          </div>
+          <%= link_to comment.user.name, user_path(comment.user.id) %>
+            <%= comment.comment %>
+          <% if comment.user == comment.user %>
+            <%= link_to "削除", memo_path(@memo.id), method: :delete, class: "comment-delete", "data-confirm" =>"本当に削除しますか？" %>
+          <% end %>
+          <hr>
+        </div>
+      <% end %>
+
+    <%= form_for [@memo, @comment] do |comment| %>
+      <div class="comment clearfix">
+        <%= comment.text_field :comment, :size =>'50x100', class: "comment-field" %>
+        <br>
+        <%= comment.submit 'コメントする', class: "do-comment" %>
+      </div>
+    <% end %>
+</div>

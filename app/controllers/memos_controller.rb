@@ -2,28 +2,31 @@ class MemosController < ApplicationController
 	#before_action :authenticate_user!, only: [:show, :create]
 
 	def index
+		@user = current_user
 		@random = Memo.order("RANDOM()").limit(50)
 		@memo = Memo.new
-		@memos = Memo.all
-		#@thememo = Memo.find(params[:id])
     	@favorite = Favorite.new
+		@thememo = Memo.find_by(id: params[:id])
+    	#@likes_count = Favorite.where(memo_id: @thememo.id).count
+
+    	if !@user.nil?
+    		followings = @user.followings
+    		@memos = Memo.where(user_id: followings).order(created_at: :desc)
+    	end
 	end
 
 	def about
 	end
 
 	def show
-		@thememo = Memo.find(params[:id])
-    	@favorite = Favorite.new
+		@memo = Memo.find(params[:id])
+		@user = @memo.user
+		@comments = @memo.comments
+    	@comment = Comment.new
 	end
 
 	def search
-		if search
-			@search = Memo.search(params[:search])
-			redirect_to memos_search_path
-		else
-			render action: :index
-		end
+		@memos = Memo.search(params[:keyword])
 	end
 
 	def create
@@ -59,14 +62,6 @@ class MemosController < ApplicationController
 		@memo.destroy
 		redirect_to users_path
 	end
-
-	def self.search(search)
-      if search
-        Memo.where(['content LIKE ?', "%#{search}%"])
-      else
-        Memo.all
-      end
-    end
 
     private
 

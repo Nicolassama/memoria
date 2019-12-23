@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_120927) do
+ActiveRecord::Schema.define(version: 2019_12_21_113319) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "memo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "comment"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -47,21 +48,29 @@ ActiveRecord::Schema.define(version: 2019_12_18_120927) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "visitor_id"
-    t.integer "visited_id"
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
     t.integer "memo_id"
     t.integer "comment_id"
-    t.string "action"
+    t.string "action", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["memo_id"], name: "index_notifications_on_memo_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
     t.integer "user_id"
+    t.integer "follow_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "following_id"
+    t.integer "follower_id"
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,7 +82,9 @@ ActiveRecord::Schema.define(version: 2019_12_18_120927) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "user_image_id"
     t.string "profile_image_id"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

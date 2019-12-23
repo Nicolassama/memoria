@@ -2,16 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+
 .post {
 	width: 60%;
 	height: auto;
 	margin: 0 auto;
 }
-
+body {
+	margin-bottom: 100px;
+}
 .body {
-	width: 60%;
-	height: 1000px;
+	width: 100%;
+	height: auto;
 	margin: 0 auto;
+	margin-bottom: 100px;
 }
 #switch {
 	width: 60%;
@@ -115,16 +121,26 @@
 
 .memo-form {
 	width: 100%;
-	height: 100px;
+	height: auto;
 	margin: 0 auto;
 	border: 1px solid #a9a4a4;
 	padding: 10px;
 	margin-top: 50px;
+	margin-bottom: 70px;
 }
 
+.user-name {
+	margin-top: 5px;
+	font-size: 16px;
+}
 
+.memo-title {
+	margin-top: 10px;
+}
 
-
+.favorite {
+	text-align: right;
+}
 
 
 
@@ -149,6 +165,7 @@
 .post-image {
 	border-radius: 30px;
 	float: left;
+	margin-right: 15px;
 }
 
 .form-title {
@@ -172,11 +189,20 @@
 	float: right;
 }
 
+.form-submit:hover {
+	zoom: 1.1;
+}
+
 
 .form-content {
 	float: left;
 	margin: 15px 0 0 10px;
 }
+
+
+
+
+
 
 /* editpage */
 
@@ -220,8 +246,113 @@
 
 
 
+/* show */
+
+.show-body {
+	width: 60%;
+	height: 1000px;
+	margin: 0 auto;
+	margin-top: 70px;
+}
+
+.memo-show {
+	width: 80%;
+	margin-top: 30px;
+	margin: 0 auto;
+	border: 1px solid #808080;
+	padding: 30px;
+}
 
 
+.comment-header {
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.comment-delete {
+	float: right;
+}
+
+.table {
+	width: 80%;
+}
+
+.new-comment {
+}
+
+.comment-field {
+	height: 50px;
+	margin: 0 auto;
+	margin-left: 80px;
+}
+
+.comment {
+	width: 780px;
+	height: 2000px;
+}
+
+.do-comment {
+	background-color: #59EFC1;
+	color: #808080;
+	border-radius: 5px;
+	margin: 0 auto;
+	margin-left: 80px;
+
+}
+
+.do-comment:hover {
+	zoom: 1.1;
+}
+
+
+.tate-border {
+	line-height: 28px;
+}
+
+
+
+.search-main {
+	margin-top: 80px;
+}
+
+
+
+
+.follow-button {
+	border: 1px solid #808080;
+	padding: 5px;
+	float: right;
+	font-size: 12px;
+	border-radius: 15px;
+}
+
+.follow-button:hover {
+	background-color: #59EFC1;
+	text-decoration: none;
+}
+
+
+.following-button {
+	border: 1px solid #808080;
+	padding: 5px;
+	float: right;
+	font-size: 12px;
+	border-radius: 15px;
+	background-color: #59EFC1;
+}
 
 
 

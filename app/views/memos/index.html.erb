@@ -4,66 +4,107 @@
 	<% flash.each do |type,msg| %>
 	<%= msg %>
 	<% end %>
-	<div class="post">
-		<button type="button" class="" data-toggle="modal" data-target="#post">
-
-			<div class="post-form">
-					<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
-			 		<div class="form-content">メモを残す</div>
-			</div>
-		</button>
-
+		<% if user_signed_in? %>
+			<div class="post">
+				<button type="button" class="" data-toggle="modal" data-target="#post">
+					<div class="post-form">
+							<%= image_tag @user.image.to_s, :size =>'50x50', class: 'post-image' %>
+					 		<div class="form-content">メモを残す</div>
+					</div>
+				</button>
 		<!-- zoomした時 -->
+			  <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+								<div class-"zoom-form">
+									<%= form_for @memo do |memo| %>
+										<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
+										<%= memo.text_field :title, class: "form-title", placeholder: "メモのタイトル"  %>
+						 				<%= memo.text_area :body, class: "form-body", placeholder: "メモを残そう！" %>
+						 				<%= memo.submit '投稿', class: "form-submit" %>
+									<% end %>
+								</div>
+					</div>
+				</div>
+				<!-- ここまで -->
 
-	  <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-						<div class-"zoom-form">
-							<%= form_for @memo do |memo| %>
-								<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
-								<%= memo.text_field :title, class: "form-title", placeholder: "メモのタイトル"  %>
-				 				<%= memo.text_area :body, class: "form-body", placeholder: "メモを残そう！" %>
-				 				<%= memo.submit '投稿', class: "form-submit" %>
-				 				<!--%= render 'layouts/error_messages', model: memo.object %-->
+				<ul id="switch">
+						<li id="a">おすすめ</li>
+						<li class="tate-border">|</li>
+					 	<li id="b">フォロー</li>
+				</ul>
+
+				<!-- おすすめ -->
+			<div id="divA">
+				<% @random.each do |memo| %>
+					<div class="memo-form">
+						<div class="post-image"><%= image_tag memo.user.image.to_s, :size =>'50x50',class: "post-image" do %><% end %></div>
+						<div class="user-name"><%= link_to memo.user.name, user_path(memo.user.id) %></div>
+						<% if current_user != memo.user %>
+	        		<% if memo.user.followed_by?(current_user) %>
+	           	 <p><%=link_to "フォロー済み", user_relationships_path(memo.user.id), class: "following-button", method: :delete %></p>
+	        		<% else %>
+	            <p><%=link_to "フォローする", user_relationships_path(memo.user.id), class: "follow-button", method: :post %></p>
+	       		 	<% end %>
+	   			 	<% end %>
+	  					<div class="memo-title"><%= link_to memo.title, memo_path(memo.id) %></div><br>
+	  					<div class="memo-body"><%= memo.body %></div>
+	  					<div class="favorite">
+	  					<!--div id="likes_buttons_<%= memo.id %>"-->
+	             <!--%= render partial: 'memos/index', locals: { memo: memo} %-->
+	          	</div>
+
+	  					<% if current_user.already_liked?(memo) %>
+	  						<%= link_to favorites_delete_path(memo_id: memo.id), method: :delete, remote: true do %><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><% end %>
+							<% else %>
+	 							<%= link_to memo_favorites_path(memo_id: memo.id), method: :post, remote: true do %>
+	 								<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+	 							<% end %>
 							<% end %>
 						</div>
+	  			<% end %>
+	  		</div>
+			</div>
+
+		<!-- フォローの部分 -->
+			<div id="divB">
+				<% @memos.each do |memo| %>
+					<div class="memo-form">
+						<%= image_tag memo.user.image.to_s, :size =>'50x50',class: "post-image" do %>
+						<% end %>
+						<div class="user-name"><%= link_to memo.user.name, user_path(memo.user.id) %></div>
+	  					<div class="memo-title"><%= link_to memo.title, memo_path(memo.id) %></div><br>
+	  					<div class="memo-body"><%= memo.body %></div>
+	  					<div class="favorite">
+	  					<!--div id="likes_buttons_<%= memo.id %>"-->
+	             <!--%= render partial: 'memos/index', locals: { memo: memo} %-->
+	          	</div>
+
+	  					<% if current_user.already_liked?(memo) %>
+	  						<%= link_to favorites_delete_path(memo_id: memo.id), method: :delete, remote: true do %><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><% end %>
+							<% else %>
+	 							<%= link_to memo_favorites_path(memo_id: memo.id), method: :post, remote: true do %>
+	 								<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+	 							<% end %>
+							<% end %>
+						</div>
+				<% end %>
+
+
 
 			</div>
-		</div>
-		<!-- ここまで -->
-
-
-		<ul id="switch">
-
-				<li id="a">おすすめ</li>
-			<div>|<li id="b">フォロー</li></div>
-
-		</ul>
-
-		<!-- おすすめ -->
-		<div id="divA">
-			<% @random.each do |memo| %>
+    <% else %>
+    	<% @random.each do |memo| %>
 			<!--%= memo.hidden_field :user_id, :value => current_user.id %-->
 			<!--%= memo.hidden_field :memo_id, :value => memo.id %-->
-			<div class="memo-form">
-  				<div class="memo-title"><%= memo.title %></div>
-  				<div class="memo-body"><%= memo.body %></div>
-  				<% if current_user.already_liked?(memo) %>
-  					<%= link_to favorites_delete_path, method: :delete do %><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><% end %>
-				<% else %>
- 					<%= link_to favorites_index_path(memo_id: memo.id), method: :post do %><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span><% end %>
-				<% end %>
-				<!--%= memo.liked_users.count %-->
-  			</div>
-			<% end %>
-		</div>
-
-		<!-- フォロワーの部分 -->
-
-		<div id="divB">
-			bbb
-		</div>
+				<div class="memo-form">
+					<%= image_tag memo.user.image.to_s, :size =>'50x50', class: 'post-image' %>
+	  			<div class="memo-title"><%= memo.title %></div>
+	  			<div class="memo-body"><%= memo.body %></div>
+					<!--%= memo.liked_users.count %-->
+	  		</div>
+	  	<% end %>
+		<% end %>
 	</div>
-</div>
 
 
 

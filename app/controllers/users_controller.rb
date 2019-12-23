@@ -1,16 +1,40 @@
 class UsersController < ApplicationController
 	def index
+		@user = current_user
 		@memo = Memo.new
 		@memos = Memo.all
 		@thememo = Memo.where(user_id: current_user.id)
-		# @user = @thememo.users
+    	@followings = @user.followings
+    	@followers = @user.followers
 	end
+
+	def show
+		@user = User.find(params[:id])
+		@memos = @user.memos.all
+	end
+
+	def follows
+    	user = User.find(params[:id])
+    	@users = user.followings
+  	end
+
+  	def followers
+   		user = User.find(params[:id])
+    	@users = user.followers
+  	end
+
 
 	def edit
 		@user = current_user
 	end
 
 	def update
+		@user = User.find(params[:id])
+   	if @user.update(user_params)
+    	redirect_to edit_user_path(@user), notice: '変更しました'
+ 		else
+    	render :edit
+  	end
 	end
 
 	def destroy
@@ -24,10 +48,8 @@ class UsersController < ApplicationController
 
 	private
 
-	def correct_user
-		@memo = Memo.find(params[:id])
-    @user = @memo.user
-    redirect_to root_path unless current_user == @user
+	def user_params
+		params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile_image, :image)
 	end
 
 end

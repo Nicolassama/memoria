@@ -71,6 +71,22 @@
 }
 
 
+
+.memo-form1 {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #a9a4a4;
+  padding: 10px;
+  margin-top: 50px;
+}
+
+.memo-form1 ul {
+  list-style: none;
+}
+
+
+
 /* editpage */
 
 .edit-frame {
@@ -81,6 +97,7 @@
   background-color: white;
   color: black;
   padding-top: 20px;
+  line-height: 30px;
 }
 
 .edit-heading {
@@ -97,9 +114,122 @@
 }
 
 
+.edit {
+  float: right;
+  margin-right: 5px;
+}
+
+.delete {
+  float: right;
+  margin-right: 5px;
+}
+
+.image {
+  width: 50px;
+  height: 50px;
+}
 
 
 
+
+
+/* user show */
+
+.user-show {
+  margin-top: 80px;
+  text-align: center;
+}
+
+
+
+/* following */
+
+.myfollowing {
+  width: 100%;
+  height: 30px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.following-image {
+  border-radius: 30px;
+  margin-right: 15px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.hr {
+  margin-bottom: 10px;
+}
+
+.following-name {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  border-bottom: 1px solid #808080;
+}
+
+.user-name1 {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+
+
+/* 退会 */
+.frame h3 {
+  text-align: center;
+}
+
+.image2 {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.logo2 {
+  text-align: center;
+  margin-left: 290px;
+}
+
+
+.exit {
+  text-align: center;
+  margin-top: 70px;
+}
+
+.yes {
+  width: 100px;
+  height: 25px;
+  border: 1px solid #f8f8f8;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #59EFC1;
+  margin-right: 40px;
+}
+
+.no {
+  width: 100px;
+  height: 25px;
+  border: 1px solid #f8f8f8;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #59EFC1;
+  margin-left: 40px;
+}
+
+.yes:hover {
+  background-color: #54F303;
+  text-decoration: none;
+
+}
+
+.no:hover {
+  background-color: #54F303;
+  text-decoration: none;
+}
 
 
 
