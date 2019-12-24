@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get 'memos/about' => 'memos#about'
   get 'memos/search' => 'memos#search'
   post 'memos' => 'memos#create'
-
 	resources :memos do
     resource :favorites, only: [:index, :create, :destroy]
     resources :comments, only: [:create]
@@ -14,7 +13,6 @@ Rails.application.routes.draw do
 
   get 'users/exit' => 'users#exit'
   delete 'users/destroy', to:'users#destroy', as: 'users_delete'
-
   resources :users do
     resource :relationships, only: [:create, :destroy]
     get :follows, on: :member
@@ -25,12 +23,11 @@ Rails.application.routes.draw do
   get 'favorites/index' => 'favorites#index'
   post 'favorites/:id' => 'favorites#create'
   delete 'favorites/destroy', to:'favorites#destroy', as: 'favorites_delete'
-
+  post 'favorites/create', to:'favorites#create', as: 'favorites_create'
 
   get 'notifications/index' => 'notifications#index'
 
-  post 'contacts/:id' => 'contacts#new'
   resource :contacts, only: [:new, :create]
-
+  post 'contacts/:id' => 'contacts#new'
 
 end

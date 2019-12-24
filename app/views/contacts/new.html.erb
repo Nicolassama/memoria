@@ -1,11 +1,11 @@
-
 <div class="about-body">
-
 	<div class="frame-contact">
 		<h3>お問い合わせ内容</h3>
+			<% flash.each do |type,msg| %>
+				<%= msg %>
+			<% end %>
 
 			<div class="group">
-
 				<%= form_for @contact do |f| %>
 					<div class="form-group">
 				    <%= f.label :name, '名前', class: 'form' %>
@@ -31,6 +31,5 @@
 
 				<% end %>
 			</div>
-
 	</div>
 </div>

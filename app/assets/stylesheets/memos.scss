@@ -2,23 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-
 .post {
 	width: 60%;
 	height: auto;
 	margin: 0 auto;
 }
+
 body {
 	margin-bottom: 100px;
 }
+
 .body {
 	width: 100%;
 	height: auto;
 	margin: 0 auto;
 	margin-bottom: 100px;
 }
+
 #switch {
 	width: 60%;
 	height: auto;
@@ -82,6 +82,10 @@ body {
 }
 
 
+.glyphicon-comment {
+	margin-right: 5px;
+}
+
 /*memo about */
 .about-body {
 	width: 100%;
@@ -89,7 +93,6 @@ body {
 	background-color: #f7f9f9;
 	padding-top: 60px;
 }
-
 
 .frame {
 	width: 50%;
@@ -108,14 +111,12 @@ body {
 	margin-top: 10px;
 }
 
-
 .container1 {
 	font-family: "Alfa Slab One";
 	width: 80%;
 	margin: 0 auto;
 	font-size: 15px;
 }
-
 
 /* memo-form */
 
@@ -142,10 +143,6 @@ body {
 	text-align: right;
 }
 
-
-
-
-
 /* post */
 
 .post-form {
@@ -154,7 +151,6 @@ body {
 	padding: 5px;
 	margin: 0 auto;
 }
-
 
 .zoom-form {
 	width: 500px;
@@ -180,7 +176,6 @@ body {
 	height: 1000px;
 	border: none;
 	margin-top: 10px;
-
 }
 
 .form-submit {
@@ -193,28 +188,16 @@ body {
 	zoom: 1.1;
 }
 
-
 .form-content {
 	float: left;
 	margin: 15px 0 0 10px;
 }
 
-
-
-
-
-
 /* editpage */
-
-
-
 
 .border h1 {
 	text-align: center;
-
 }
-
-
 
 .border {
 	width: 500px;
@@ -230,7 +213,6 @@ body {
 	margin-top: 10px;
 }
 
-
 .form-edit {
 	margin: 0 auto;
 	margin-top: 10px;
@@ -243,8 +225,6 @@ body {
 	margin-top: 10px;
 	margin-right: 10px;
 }
-
-
 
 /* show */
 
@@ -263,24 +243,9 @@ body {
 	padding: 30px;
 }
 
-
 .comment-header {
 	text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .comment-delete {
 	float: right;
@@ -288,9 +253,6 @@ body {
 
 .table {
 	width: 80%;
-}
-
-.new-comment {
 }
 
 .comment-field {
@@ -310,7 +272,6 @@ body {
 	border-radius: 5px;
 	margin: 0 auto;
 	margin-left: 80px;
-
 }
 
 .do-comment:hover {
@@ -322,14 +283,9 @@ body {
 	line-height: 28px;
 }
 
-
-
 .search-main {
 	margin-top: 80px;
 }
-
-
-
 
 .follow-button {
 	border: 1px solid #808080;
@@ -344,7 +300,6 @@ body {
 	text-decoration: none;
 }
 
-
 .following-button {
 	border: 1px solid #808080;
 	padding: 5px;
@@ -354,5 +309,9 @@ body {
 	background-color: #59EFC1;
 }
 
+.following-button:hover {
+	background-color: #59EFC1;
+	text-decoration: none;
+}
 
 

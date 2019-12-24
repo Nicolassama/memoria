@@ -1,14 +1,12 @@
-
-<h1>aaaaa</h1>
+<h1>Notifications</h1>
 <div class="body">
-		  <% @notifications.each do |n| %>
-		  <div class="table">
-				<div class="notifications">
-					<%= link_to user_path(n.visited_id) do %>
-		   			<%= image_tag n.visitor.image.to_s, :size =>'50x50',class: "post-image" %>
-		 			<% end %>
-
-					<%== notification_form(n) %>
+	<% @notifications.each do |n| %>
+		<div class="table">
+			<div class="notifications">
+				<%= link_to user_path(n.visited_id) do %>
+	   			<%= image_tag n.visitor.image.to_s, :size =>'50x50',class: "post-image" %>
+		 		<% end %>
+				<%== notification_form(n) %>
 					<span class="moderate-font">
 						<%= " (#{time_ago_in_words(n.created_at)}前)" %>
 					</span>
@@ -16,7 +14,7 @@
 		  		<% if !@comment.nil? %>
 		   			<p class="moderate-font"><%= @comment %></p>
 		  		<% end %>
-		  	</div>
 		  </div>
-			<% end %>
+		</div>
+	<% end %>
 </div>

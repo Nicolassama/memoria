@@ -13,28 +13,17 @@ class UsersController < ApplicationController
 		@memos = @user.memos.all
 	end
 
-	def follows
-    	user = User.find(params[:id])
-    	@users = user.followings
-  	end
-
-  	def followers
-   		user = User.find(params[:id])
-    	@users = user.followers
-  	end
-
-
 	def edit
 		@user = current_user
 	end
 
 	def update
 		@user = User.find(params[:id])
-   	if @user.update(user_params)
-    	redirect_to edit_user_path(@user), notice: '変更しました'
- 		else
-    	render :edit
-  	end
+	   	if @user.update(user_params)
+	    	redirect_to edit_user_path(@user), notice: '変更しました'
+	 		else
+	    	render :edit
+	  	end
 	end
 
 	def destroy

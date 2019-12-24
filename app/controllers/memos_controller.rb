@@ -1,21 +1,17 @@
 class MemosController < ApplicationController
-	#before_action :authenticate_user!, only: [:show, :create]
+	before_action :authenticate_user!, only: [:show, :create]
 
 	def index
 		@user = current_user
 		@random = Memo.order("RANDOM()").limit(50)
 		@memo = Memo.new
+		@comments = @memo.comments
     	@favorite = Favorite.new
 		@thememo = Memo.find_by(id: params[:id])
-    	#@likes_count = Favorite.where(memo_id: @thememo.id).count
-
     	if !@user.nil?
     		followings = @user.followings
     		@memos = Memo.where(user_id: followings).order(created_at: :desc)
     	end
-	end
-
-	def about
 	end
 
 	def show
@@ -48,13 +44,13 @@ class MemosController < ApplicationController
 
 	def update
 		@memo = Memo.find(params[:id])
-	if @memo.update(memo_params)
-		flash[:notice]="変更しました"
-		redirect_to users_path
-	else
-		flash[:notice]="error"
-		render action: :edit
-	end
+		if @memo.update(memo_params)
+			flash[:notice]="変更しました"
+			redirect_to users_path
+		else
+			flash[:notice]="error"
+			render action: :edit
+		end
 	end
 
 	def destroy

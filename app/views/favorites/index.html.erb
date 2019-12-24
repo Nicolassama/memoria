@@ -7,24 +7,32 @@
 
 			<% @favorites.each do |favorite| %>
 				<div class="table memo-form">
-					<div class="post-image"><%= image_tag favorite.memo.user.image.to_s, :size =>'50x50', class: 'post-image' do %><% end %></div>
-				<div class="user-name"><%= link_to favorite.memo.user.name, user_path(favorite.memo.user.id) %></div>
+					<div class="post-image">
+						<%= image_tag favorite.memo.user.image.to_s, :size =>'50x50', class: 'post-image' do %>
+						<% end %>
+					</div>
+
+					<div class="user-name">
+						<%= link_to favorite.memo.user.name, user_path(favorite.memo.user.id) %>
+					</div>
 	  				<% memo = Memo.find_by(id: favorite.memo_id) %>
 	  				<% user = User.find_by(id: memo.user_id) %>
-				<div class="memo-title"><%= link_to favorite.memo.title, memo_path(favorite.memo.id) %></div><br>
-	  				<span class-"memo-body"><%= favorite.memo.body %></span>
-	  				<%# if current_user.already_liked?(favorite) %>
-	  					<%= link_to favorites_delete_path(memo_id: memo.id), method: :delete do %>
-	  						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-	  					<% end %>
-					<%# else %>
-	 					<%#= link_to favorites_index_path(memo_id: memo.id), method: :post do %>
-	 						<!-- <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span> -->
-	 					<%# end %>
-					<%# end %>
+					<div class="memo-title">
+						<%= link_to favorite.memo.title, memo_path(favorite.memo.id) %>
+					</div>
+					<br>
+	  			<span class-"memo-body"><%= favorite.memo.body %></span>
+	  			<!-- いいねとコメント -->
+	  				<div class="favorite">
+	  					<%= link_to "", memo_path(favorite.memo.id), class: "glyphicon glyphicon-comment" %>
+	  					<%= favorite.memo.comments.count %>
+	  					<div id="likes_buttons_<%= memo.id %>">
+								<%= render partial: 'favorites/like', locals: { memo: memo} %>
+     					</div>
+						</div>
+					<!-- ここまで -->
   			</div>
 			<% end %>
-
 		</div>
 </div>
 

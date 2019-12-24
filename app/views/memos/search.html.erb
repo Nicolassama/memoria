@@ -3,7 +3,8 @@
     <% if user_signed_in? %>
 			<% @memos.each do |memo| %>
 		  	<div class="post-image">
-		  		<%= image_tag memo.user.image.to_s, :size =>'50x50', class: 'post-image' do %><% end %>
+		  		<%= image_tag memo.user.image.to_s, :size =>'50x50', class: 'post-image' do %>
+		  		<% end %>
 		  	</div>
 				<div class="user-name">
 					<%= link_to memo.user.name, user_path(memo.user.id) %>
@@ -19,8 +20,8 @@
 				<div class="user-name">
 					<%= memo.user.name %>
 				</div>
-		    <%= memo.title %>
-		    <hr>
+		    	<%= memo.title %>
+		    	<hr>
 			<% end %>
 		<% end %>
 	</div>

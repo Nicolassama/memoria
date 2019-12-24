@@ -1,0 +1,11 @@
+<% if current_user.already_liked?(memo) %>
+	<%= link_to favorites_delete_path(memo_id: memo.id), method: :delete, remote: true do %>
+		<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+		<%= memo.favorites.count %>
+	<% end %>
+<% else %>
+	<%= link_to favorites_create_path(memo_id: memo.id), method: :post, remote: true do %>
+		<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+		<%= memo.favorites.count %>
+	<% end %>
+<% end %>

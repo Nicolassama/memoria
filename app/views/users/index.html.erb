@@ -1,102 +1,86 @@
-
 <div class="body">
 	<h1>mypage</h1>
 	<div class="post">
 		<button type="button" class="" data-toggle="modal" data-target="#post">
-
 			<div class="post-form">
 					<%= image_tag @user.image.to_s, :size =>'50x50', class: 'post-image' %>
 			 		<div class="form-content">メモを残す</div>
 			</div>
 		</button>
-
 		<!-- zoomした時 -->
-
 	  <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog" role="document">
-						<div class-"zoom-form">
-							<%= form_for @memo do |memo| %>
-								<div class="error-message"></div>
-								<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
-								<%= memo.text_field :title, class: "form-title", placeholder: "メモのタイトル"  %>
-				 				<%= memo.text_area :body, class: "form-body", placeholder: "メモを残そう！" %>
-				 				<%= memo.submit '投稿', class: "form-submit" %>
-							<% end %>
-						</div>
-
+				<div class-"zoom-form">
+					<%= form_for @memo do |memo| %>
+						<div class="error-message"></div>
+						<%= image_tag 'no.image.jpg', :size =>'50x50', class: 'post-image' %>
+						<%= memo.text_field :title, class: "form-title", placeholder: "メモのタイトル"  %>
+		 				<%= memo.text_area :body, class: "form-body", placeholder: "メモを残そう！" %>
+		 				<%= memo.submit '投稿', class: "form-submit" %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 
 		<ul id="switch">
 			<li id="a">mymemo</li>
 			<li class="tate-border">|</li>
-			<li id="b">フォロー</li>
+			<li id="b">フォロー<%= @user.followings.count %></li>
 			<li class="tate-border">|</li>
-			<li id="c">フォロワー</li>
+			<li id="c">フォロワー<%= @user.followers.count %></li>
 		</ul>
 
 		<!-- mymemoの部分 -->
 		<div id="divA">
-			<% @thememo.each do |memos| %>
+			<% @thememo.each do |memo| %>
 				<div class="table memo-form1">
 					<%= image_tag @user.image.to_s, :size =>'50x50', class: 'post-image' %>
-					<div class="memo-title"><%= link_to memos.title, memo_path(memos.id) %></div><br>
-					<span class-"memo-body"><%= memos.body %></span>
-					<ul class="favorite">
-						<li>
-						<% if current_user.already_liked?(memos) %>
-	  						<%= link_to favorites_delete_path(memo_id: memos.id), method: :delete, remote: true do %><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-	  						<%= memos.favorites.count %>
-	  						<% end %>
-							<% else %>
-	 							<%= link_to memo_favorites_path(memo_id: memos.id), method: :post, remote: true do %>
-	 								<span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-	 								<%= memos.favorites.count %>
-	 							<% end %>
-							<% end %>
-					</li>
-					<li>
-						<%= link_to "削除", users_path(memos.id), method: :delete, "data-confirm" =>"本当に削除しますか？", class: 'delete' %>
-					</li>
-					<li>
-						<%= link_to "編集", edit_memo_path(memos.id), class: "edit" %>
-					</li>
+					<div class="memo-title"><%= link_to memo.title, memo_path(memo.id) %></div><br>
+					<span class-"memo-body"><%= memo.body %></span>
+					<!-- いいねとコメント -->
+  					<div class="favorite">
+  						<%= link_to "", memo_path(memo.id), class: "glyphicon glyphicon-comment" %>
+  						<%= memo.comments.count %>
+  						<div id="likes_buttons_<%= memo.id %>">
+								<%= render partial: 'favorites/like', locals: { memo: memo} %>
+        			</div>
+						</div>
+					<!-- ここまで -->
+						<ul>
+							<li>
+								<%= link_to "削除", users_path(memo.id), method: :delete, "data-confirm" =>"本当に削除しますか？", class: 'delete' %>
+							</li>
+							<li>
+								<%= link_to "編集", edit_memo_path(memo.id), class: "edit" %>
+							</li>
+						</ul>
 				</div>
 			<% end %>
 		</div>
 		<!-- フォローの部分 -->
-
-
 		<div id="divB">
-				<% @followings.each do |following| %>
-				<br>
-					<div class="table myfollowing">
-						<div class="following-name">
-							<%= image_tag following.image.to_s, :size =>'50x50', class: 'following-image' %>
-							<%= link_to following.name, user_path(following.id), class: "user-name1" %>
-						</div>
+			<% @followings.each do |following| %>
+			<br>
+				<div class="table myfollowing">
+					<div class="following-name">
+						<%= image_tag following.image.to_s, :size =>'50x50', class: 'following-image' %>
+						<%= link_to following.name, user_path(following.id), class: "user-name1" %>
 					</div>
-				<% end %>
+				</div>
+			<% end %>
 		</div>
 
 		<!-- フォロワーの部分 -->
-
 		<div id="divC">
-
 			<% @followers.each do |follower| %>
-				<br>
-					<div class="table myfollowing">
-						<div class="following-name">
-							<%= image_tag follower.image.to_s, :size =>'50x50', class: 'following-image' %>
-							<%= link_to follower.name, user_path(follower.id), class: "user-name1" %>
-						</div>
+			<br>
+				<div class="table myfollowing">
+					<div class="following-name">
+						<%= image_tag follower.image.to_s, :size =>'50x50', class: 'following-image' %>
+						<%= link_to follower.name, user_path(follower.id), class: "user-name1" %>
 					</div>
-				<% end %>
-		</div>
-
-
-
-
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

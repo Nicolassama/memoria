@@ -20,9 +20,9 @@
 
         <div class="header-list">
           <ul class="header-right">
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to current_user.name, users_path %></li>
-            <li><%= link_to "編集", edit_user_path(current_user) %></li>
+            <li><%= link_to "", destroy_user_session_path, class: "glyphicon glyphicon-log-out", method: :delete, "data-confirm" =>"ログアウトしますか？" %></li>
+            <li><%= link_to "", users_path, class: "glyphicon glyphicon-user" %></li>
+            <li><%= link_to "", edit_user_path(current_user), class: "glyphicon glyphicon-cog"%></li>
             <li>
               <div class="space">
                 <%= form_tag(memos_search_path,:method => 'get') do %>
