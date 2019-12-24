@@ -1,5 +1,6 @@
 class MemosController < ApplicationController
 	before_action :authenticate_user!, only: [:show, :create]
+	before_action :correct_user, only: [:edit, :update]
 
 	def index
 		@user = current_user
@@ -39,6 +40,7 @@ class MemosController < ApplicationController
 	end
 
 	def edit
+		@user = current_user
 		@memo = Memo.find(params[:id])
 	end
 
@@ -64,5 +66,11 @@ class MemosController < ApplicationController
     def memo_params
         params.require(:memo).permit(:title, :body, :memo_image_id)
     end
+
+	def correct_user
+		@memo = Memo.find(params[:id])
+    	@user = @memo.user
+    	redirect_to memo_path(@memo) unless current_user == @user
+ 	end
 
 end
